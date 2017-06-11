@@ -201,6 +201,11 @@ li {
         }
     }
 
+    &-stats {
+        margin-bottom: 50px;
+        text-transform: capitalize;
+    }
+
     &-shortStats {
         text-align: center;
         .el-tag {
@@ -228,12 +233,14 @@ li {
         margin: 0;
         font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
         font-weight: bold;
+        text-transform: capitalize;
     }
 
     &-item {
         padding: 10px 20px;
         font-size: 14px;
         cursor: pointer;
+        text-transform: capitalize;
 
         &:hover,
         &.is-active {

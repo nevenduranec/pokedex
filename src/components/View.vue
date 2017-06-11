@@ -24,18 +24,17 @@
 
                     <div class="Pokemon-image">
                         <img :src="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+ $route.params.id + '.png'" />
+                        <div class="Pokemon-shortStats">
+                            <el-tag v-for="(type,index) in pokemon.types" :key="index">{{ type.type.name }}</el-tag>
+                        </div>
                     </div>
 
                     <el-row :gutter="20" class="Main">
                         <el-col :xs="24" :sm="8" :md="8" :lg="8">
 
-                            <div class="Pokemon-shortStats">
-                                <el-tag v-for="(type,index) in pokemon.types" :key="index">{{ type.type.name }}</el-tag>
-                            </div>
-
-                            <ul>
+                            <ul class="Pokemon-stats">
                                 <li v-for="stat in pokemon.stats">
-                                    <p>{{ stat.stat.name }}: {{ stat.base_stat }}</p>
+                                    <p>{{ stat.stat.name.replace('-', ' ') }}: {{ stat.base_stat }}</p>
                                     <el-progress :show-text="false" :stroke-width="18" :percentage="stat.base_stat > 100 ? 100 : stat.base_stat"></el-progress>
                                 </li>
                             </ul>
@@ -50,7 +49,7 @@
                                 </div>
                                 <ul>
                                     <li v-for="(move, index) in pokemon.moves" :key="index" @click="getMoveInfo(move.move.name)" class="Moves-item" :class="singleMove.name == move.move.name ? 'is-active' : ''">
-                                        {{ move.move.name }}
+                                        {{ move.move.name.replace('-', ' ') }}
                                     </li>
                                 </ul>
                             </el-card>
