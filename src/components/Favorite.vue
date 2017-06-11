@@ -4,6 +4,7 @@
             :icon="isInFavorites(id) ? 'star-on' : 'star-off'"
             type="text"
             class="Pokemon-favorite"
+            size="large"
             @click="favorite(id)">
         </el-button>
     </el-tooltip>

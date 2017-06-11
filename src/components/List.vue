@@ -20,7 +20,7 @@
                         </el-select>
                     </el-form-item>
                     <el-form-item>
-                        <el-checkbox @change="showOnlyFavorites" v-model="onlyFavorites" v-show="favoritePokemons.length > 0">My favorites only</el-checkbox>
+                        <el-checkbox @change="showOnlyFavorites" v-model="onlyFavorites">My favorites only</el-checkbox>
                     </el-form-item>
                     <el-button type="primary" @click="filtersOpen = false" class="Filter-submit">Filter</el-button>
                 </el-form>
@@ -28,6 +28,7 @@
         </div>
 
         <el-row :gutter="10" class="List">
+
             <el-col :xs="12" :sm="8" :md="6" :lg="4" v-for="(pokemon, index) in filter(pokemons)" :key="index" class="Pokemon-item">
                 <el-card :body-style="{ padding: '10px' }">
                     <div class="Pokemon-inner" @click="view(pokemon.url.split('/pokemon/')[1].replace('/',''))" v-loading="loadingOne === pokemon.url">
@@ -39,6 +40,9 @@
                     <Favorite :id="pokemon.url.split('/pokemon/')[1].replace('/','')"/>
                 </el-card>
             </el-col>
+
+            <p v-show="onlyFavorites && !favoritePokemons" class="List-noFavorites">You have no favorite pokemons yet :/ How about you add some.</p>
+
         </el-row>
 
         <div class="Pagination">
@@ -94,6 +98,8 @@ export default {
                 this.loadingList.close();
                 this.filtersOpen = false;
 
+                window.scrollTo(0, 0);
+
             } catch (e) {
                 console.error(e);
             }
@@ -121,6 +127,7 @@ export default {
             });
         },
         async showOnlyFavorites () {
+            this.favoritePokemons = localStorage.getItem('favoritePokemons') ? localStorage.getItem('favoritePokemons').split(',') : '';
             if (this.onlyFavorites){
                 this.limit = 999999;
                 this.filter()

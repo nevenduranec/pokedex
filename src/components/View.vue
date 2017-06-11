@@ -123,7 +123,7 @@ export default {
                 });
                 const response = await API.get(`pokemon/${this.$route.params.id}/`);
                 this.pokemon = response.data;
-                console.log(response.data);
+
                 this.getMoveInfo(this.pokemon.moves[0].move.name);
 
                 this.loadingList.close();
