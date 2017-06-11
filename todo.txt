@@ -1,0 +1,9 @@
+● pregledati listu pokemona
+
+● za svakog pokemona pregledati njegove statove, poteze i sl.
+
+● dodati/maknuti pojedinog pokemona u listu “My pokemon”
+
+● pregledati listu “My pokemon”
+
+● pregledati detalje “My pokemon”
