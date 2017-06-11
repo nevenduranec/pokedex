@@ -1,6 +1,6 @@
 # pokedex
 
-> Pokedex project for Infinum
+> Pokedex project
 
 ## Build Setup
 
