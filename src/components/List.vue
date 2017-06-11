@@ -111,7 +111,7 @@ export default {
             const multiplier = this.currentPage > 1 ? this.currentPage : 0;
             if (resetOffset){
                 this.offset = 0;
-                this.currentPage = 1;
+                this.currentPage = 0;
             } else {
                 this.offset = this.limit * multiplier;
                 this.getList();
